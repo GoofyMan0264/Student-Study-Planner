@@ -1,0 +1,10 @@
+STUDENT STUDY PLANNER — DEPLOYMENT CHECKLIST
+
+[ ] Test index.html locally.
+[ ] Create a public GitHub repository named student-study-planner.
+[ ] Upload the site files at the repository root.
+[ ] Enable GitHub Pages in Settings > Pages.
+[ ] Select Deploy from a branch, main, and /(root).
+[ ] Wait for GitHub Pages to publish the site.
+[ ] Open the live link and test adding a task and a timetable session.
+[ ] Remember: browser Local Storage is not shared between devices.
