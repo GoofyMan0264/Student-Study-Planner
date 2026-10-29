@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple study planner for managing tasks and a weekly study timetable.">
+  <title>Student Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">STUDENT WORKSPACE</p>
+        <h1>Study Planner</h1>
+        <p class="header-subtitle">Plan your sessions. Track your progress. Keep learning.</p>
+      </div>
+      <button id="theme-toggle" class="button button-quiet" type="button" aria-pressed="false">🌙 Dark mode</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="stats-grid" aria-label="Study task summary">
+      <article class="stat-card"><span class="stat-label">Total tasks</span><strong id="stat-total">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Completed</span><strong id="stat-completed">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Pending</span><strong id="stat-pending">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Overdue</span><strong id="stat-overdue">0</strong></article>
+    </section>
+
+    <section class="panel" aria-labelledby="task-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR TO-DO LIST</p><h2 id="task-heading">Study tasks</h2></div>
+      </div>
+      <form id="task-form" class="form-grid">
+        <div class="field field-wide">
+          <label for="task-title">Task title *</label>
+          <input id="task-title" name="title" type="text" maxlength="120" placeholder="e.g. Revise algebra" required>
+        </div>
+        <div class="field">
+          <label for="task-subject">Subject *</label>
+          <input id="task-subject" name="subject" type="text" maxlength="60" placeholder="e.g. Mathematics" required>
+        </div>
+        <div class="field">
+          <label for="task-deadline">Deadline</label>
+          <input id="task-deadline" name="deadline" type="date">
+        </div>
+        <div class="field">
+          <label for="task-priority">Priority</label>
+          <select id="task-priority" name="priority">
+            <option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-actions"><button class="button button-primary" type="submit">＋ Add task</button></div>
+      </form>
+
+      <div class="toolbar">
+        <div class="field search-field">
+          <label for="task-search">Search tasks</label>
+          <input id="task-search" type="search" placeholder="Search title or subject">
+        </div>
+        <div class="field">
+          <label for="task-filter">Show</label>
+          <select id="task-filter">
+            <option value="all">All tasks</option><option value="pending">Pending</option><option value="completed">Completed</option><option value="overdue">Overdue</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="task-sort">Sort by</label>
+          <select id="task-sort">
+            <option value="newest">Newest first</option><option value="deadline">Deadline</option><option value="priority">Priority</option><option value="alphabetical">Title A–Z</option>
+          </select>
+        </div>
+      </div>
+      <p id="task-message" class="status-message" role="status" aria-live="polite"></p>
+      <div id="task-list" class="task-list"></div>
+    </section>
+
+    <section class="panel" id="weekly-timetable" aria-labelledby="timetable-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">PLAN AHEAD</p><h2 id="timetable-heading">Weekly study timetable</h2><p class="section-description">Add study sessions for each day. Sessions on the same day cannot overlap.</p></div>
+      </div>
+      <form id="timetable-form" class="form-grid">
+        <div class="field">
+          <label for="study-day">Day *</label>
+          <select id="study-day" required>
+            <option value="">Choose a day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="study-subject">Subject *</label>
+          <input id="study-subject" type="text" maxlength="60" placeholder="e.g. Science" required>
+        </div>
+        <div class="field">
+          <label for="study-start">Start time *</label>
+          <input id="study-start" type="time" required>
+        </div>
+        <div class="field">
+          <label for="study-end">End time *</label>
+          <input id="study-end" type="time" required>
+        </div>
+        <div class="field field-wide">
+          <label for="study-description">Description (optional)</label>
+          <input id="study-description" type="text" maxlength="160" placeholder="e.g. Review chapter 3">
+        </div>
+        <div class="form-actions"><button class="button button-primary" type="submit">＋ Add study session</button></div>
+      </form>
+      <p id="timetable-message" class="status-message" role="status" aria-live="polite"></p>
+      <div class="timetable-summary"><span>Total planned study time</span><strong id="study-hours">0h 0m</strong></div>
+      <div id="timetable-container" class="timetable-grid"></div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Student Study Planner · Built with HTML, CSS and JavaScript</p>
+      <p>Your tasks and timetable are saved in this browser only.</p>
+    </footer>
+  </main>
+</body>
+</html>
